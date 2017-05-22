@@ -20,21 +20,28 @@
 <h:body>
     <ui:composition template="templates/defaultTemplate.xhtml">
         <ui:define name="content">
-            <p:dataTable var="contact" value="#{listContactsController.contacts}">
+
+            <p:dataTable id="contactTable" var="contact" editable="true"
+                         value="#{listContactsController.contacts}">
+
+                <p:column headerText="Id">
+                    <h:outputText value="#{contact.id}"/>
+                </p:column>
+
                 <p:column headerText="First name">
-                    <h:outputText value="#{contact.firstName}" />
+                    <h:outputText value="#{contact.firstName}"/>
                 </p:column>
 
                 <p:column headerText="Last name">
-                    <h:outputText value="#{contact.lastName}" />
+                    <h:outputText value="#{contact.lastName}"/>
                 </p:column>
 
                 <p:column headerText="Email">
-                    <h:outputText value="#{contact.emailAddress}" />
+                    <h:outputText value="#{contact.emailAddress}"/>
                 </p:column>
 
                 <p:column headerText="Phone number">
-                    <h:outputText value="#{contact.phoneNumber}" />
+                    <h:outputText value="#{contact.phoneNumber}"/>
                 </p:column>
             </p:dataTable>
         </ui:define>
