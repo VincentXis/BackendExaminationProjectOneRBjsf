@@ -17,27 +17,27 @@
     <title>Title</title>
 </h:head>
 
-<h:body style="padding: 3%;">
-    <ui:insert name="header">
-        <div style="text-align: center">
-            <h2>Welcome to Delta</h2>
-        </div>
-        <ui:include src="components/navigationComponent.xhtml"/>
-    </ui:insert>
-    <div>
-        <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px">
-            <h:panelGrid columns="3" cellpadding="10">
-                <h:panelGroup/>
+<h:body style="padding-top: 5%;padding-left: 10%;padding-right: 10%;">
 
-                <ui:insert name="content">
-                </ui:insert>
-                <h:panelGroup/>
-            </h:panelGrid>
-        </p:panel>
+    <div class="ui-g" style="width: 100%;">
+        <div class="ui-g-12">
+            <ui:insert name="header">
+                <div style="text-align: center">
+                    <h2>Welcome to Delta</h2>
+                </div>
+                <ui:include src="components/navigationComponent.xhtml"/>
+            </ui:insert>
+        </div>
+        <div class="ui-g-12">
+            <ui:insert name="content">
+            </ui:insert>
+        </div>
+        <div class="ui-g-12">
+            <ui:insert name="header">
+                <ui:include src="components/footComponent.xhtml"/>
+            </ui:insert>
+        </div>
     </div>
-    <ui:insert name="foot">
-        <ui:include src="components/footComponent.xhtml"/>
-    </ui:insert>
 
 
 </h:body>
