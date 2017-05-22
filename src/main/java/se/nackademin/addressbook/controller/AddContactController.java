@@ -20,9 +20,13 @@ public class AddContactController {
         if (validateInput()) {
             service.add(getContact());
             setMessage("Contact added");
+            clearFields();
         } else {
             setMessage("Failed to add contact, all fields must be filled");
         }
+    }
+    public void clearFields(){
+        contact = null;
     }
 
     public boolean validateInput() {
