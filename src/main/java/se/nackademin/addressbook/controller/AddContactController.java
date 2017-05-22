@@ -35,9 +35,9 @@ public class AddContactController {
     // Validate input, null check and empty check
     private boolean validateInput() {
         return (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
-                (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
-                (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
-                (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty());
+                (getContact().getLastName() != null && !getContact().getLastName().trim().isEmpty()) &&
+                (getContact().getEmailAddress() != null && !getContact().getEmailAddress().trim().isEmpty()) &&
+                (getContact().getPhoneNumber() != null && !getContact().getPhoneNumber().trim().isEmpty());
     }
 
     // Set
