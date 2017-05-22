@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Title</title>
+</h:head>
+
+<h:body>
+    <ui:composition template="templates/defaultTemplate.xhtml">
+
+        <ui:define name="content">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="First name:"/>
+                    <p:inputText value="#{addContactController.contact.firstName}" required="true"
+                                 requiredMessage="#{addContactController.requiredMessage} First name"
+                                 validatorMessage="#{addContactController.validatorMessage} First name">
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Last name:"/>
+                    <p:inputText value="#{addContactController.contact.lastName}" required="true"
+                                 requiredMessage="#{addContactController.requiredMessage} Last name"
+                                 validatorMessage="#{addContactController.validatorMessage} Last name">
+
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="E-mail address:"/>
+                    <p:inputText value="#{addContactController.contact.emailAddress}" required="true"
+                                 requiredMessage="#{addContactController.requiredMessage} E-mail address"
+                                 validatorMessage="#{addContactController.validatorMessage} E-mail address">
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Phone number:"/>
+                    <p:inputText value="#{addContactController.contact.phoneNumber}" required="true"
+                                 requiredMessage="#{addContactController.requiredMessage} Phone number"
+                                 validatorMessage="#{addContactController.validatorMessage} Phone number">
+                        <f:validateLength minimum="2"/>
+                    </p:inputText>
+
+                    <h:panelGroup/>
+                    <h:commandButton value="Add Contact" action="#{addContactController.addContact}"/>
+                </p:panelGrid>
+
+                <p:messages id="msgs"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>

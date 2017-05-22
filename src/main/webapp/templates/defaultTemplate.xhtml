@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: vincentxis
+  Date: 2017-05-16
+  Time: 15:59
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Title</title>
+</h:head>
+
+<h:body style="padding: 3%;">
+    <ui:insert name="header">
+        <div style="text-align: center">
+            <h2>Welcome to Delta</h2>
+        </div>
+        <ui:include src="components/navigationComponent.xhtml"/>
+    </ui:insert>
+    <div>
+        <p:panel id="basic" header="Basic" footer="Movie Details" style="margin-bottom:20px">
+            <h:panelGrid columns="3" cellpadding="10">
+                <h:panelGroup/>
+
+                <ui:insert name="content">
+                </ui:insert>
+                <h:panelGroup/>
+            </h:panelGrid>
+        </p:panel>
+    </div>
+    <ui:insert name="foot">
+        <ui:include src="components/footComponent.xhtml"/>
+    </ui:insert>
+
+
+</h:body>
+
+</html>
