@@ -5,10 +5,10 @@ import se.nackademin.addressbook.model.ContactDetails;
 import se.nackademin.addressbook.service.AddressBookService;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-import javax.inject.Named;
 
-@Named
+@ManagedBean(name = "addContactController")
 @RequestScoped
 public class AddContactController {
     @Inject
@@ -16,6 +16,7 @@ public class AddContactController {
     private Contact contact;
     private String message = "";
 
+    // Add new contact
     public void addContact() {
         if (validateInput()) {
             service.add(getContact());
@@ -25,11 +26,14 @@ public class AddContactController {
             setMessage("Failed to add contact, all fields must be filled");
         }
     }
-    public void clearFields(){
+
+    // Clear form fields
+    public void clearFields() {
         contact = null;
     }
 
-    public boolean validateInput() {
+    // Validate input, null check and empty check
+    private boolean validateInput() {
         return (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
                 (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
                 (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
@@ -53,9 +57,10 @@ public class AddContactController {
         return message;
     }
 
-    public String getValidatorMessage(){
+    public String getValidatorMessage() {
         return "Field must contain at least two characters:";
     }
+
     public String getRequiredMessage() {
         return "Field has not been set:";
     }

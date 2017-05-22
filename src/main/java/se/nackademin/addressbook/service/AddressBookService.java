@@ -2,8 +2,9 @@ package se.nackademin.addressbook.service;
 
 import se.nackademin.addressbook.model.Contact;
 
-import javax.ejb.Singleton;
-import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
 import static java.util.stream.Collectors.toList;
 
 @Singleton
-public class AddressBookService implements Serializable{
+public class AddressBookService {
     private Integer id = 0;
     private Map<Integer, Contact> contactMap = new HashMap<>();
 
