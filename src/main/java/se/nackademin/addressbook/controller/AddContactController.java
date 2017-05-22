@@ -25,7 +25,7 @@ public class AddContactController {
         }
     }
 
-    private boolean validateInput() {
+    public boolean validateInput() {
         return (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
                 (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
                 (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&

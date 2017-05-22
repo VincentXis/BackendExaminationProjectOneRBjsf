@@ -17,20 +17,23 @@
     <title>Title</title>
 </h:head>
 
-<h:body style="padding-top: 5%;padding-left: 10%;padding-right: 10%;">
+<h:body style="padding-top: 3%;padding-left: 15%;padding-right: 15%;">
 
     <div class="ui-g" style="width: 100%;">
         <div class="ui-g-12">
             <ui:insert name="header">
                 <div style="text-align: center">
-                    <h2>Welcome to Delta</h2>
+                    <h1>Welcome to Delta</h1>
+                    <h2>Another address book</h2>
                 </div>
                 <ui:include src="components/navigationComponent.xhtml"/>
             </ui:insert>
         </div>
         <div class="ui-g-12">
-            <ui:insert name="content">
-            </ui:insert>
+            <p:panel>
+                <ui:insert name="content">
+                </ui:insert>
+            </p:panel>
         </div>
         <div class="ui-g-12">
             <ui:insert name="header">
