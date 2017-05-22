@@ -16,10 +16,19 @@ import java.util.Collection;
 public class ListContactsController {
     @Inject
     private AddressBookService service;
-
+    private boolean showConfirmDialog = false;
     // Get
     public Collection<Contact> getContacts() {
         return service.getAllContacts();
+    }
+
+    public boolean isShowConfirmDialog() {
+        return showConfirmDialog;
+    }
+
+    // Delete contact
+    public void deleteContact(Integer id){
+        service.delete(id);
     }
 
     // Edit

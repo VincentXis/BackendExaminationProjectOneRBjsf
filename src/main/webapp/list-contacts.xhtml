@@ -24,13 +24,14 @@
                 <p:growl id="msgs" showDetail="true"/>
 
 
+
                 <p:dataTable id="contactTable" var="contact" editable="true"
                              value="#{listContactsController.contacts}">
-
+                    <p:growl id="message" showDetail="true"/>
                     <p:ajax event="rowEdit" listener="#{listContactsController.onRowEdit}" update=":form:msgs"/>
                     <p:ajax event="rowEditCancel" listener="#{listContactsController.onRowCancel}" update=":form:msgs"/>
 
-                    <p:column headerText="Id">
+                    <p:column headerText="Id" style="width: 50px;">
                         <h:outputText value="#{contact.id}"/>
                     </p:column>
 
@@ -77,8 +78,14 @@
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
+
                     <p:column headerText="Edit" style="width:32px">
-                        <p:rowEditor />
+                        <p:rowEditor/>
+                    </p:column>
+
+                    <p:column headerText="Delete" style="width:50px">
+                        <p:commandButton value="X" update="message" onclick="update()"
+                                         actionListener="#{listContactsController.deleteContact(contact.id)}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
