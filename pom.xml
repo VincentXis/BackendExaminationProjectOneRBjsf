@@ -25,8 +25,6 @@
             <artifactId>primefaces</artifactId>
             <version>6.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
@@ -37,8 +35,6 @@
             <artifactId>jsf-impl</artifactId>
             <version>2.1.7</version>
         </dependency>
-
-
     </dependencies>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>

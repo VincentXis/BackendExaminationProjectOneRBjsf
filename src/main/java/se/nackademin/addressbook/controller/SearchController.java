@@ -7,39 +7,45 @@ import se.nackademin.addressbook.service.AddressBookService;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import java.util.Collection;
 
 @ManagedBean(name = "searchController")
 @RequestScoped
 public class SearchController {
 
-    @Inject
+    @ManagedProperty("#{service}")
     private AddressBookService service;
     private String searchQuery = "";
     private Collection<Contact> contacts;
 
     @PostConstruct
-    private void load(){
-        setContacts(getSearchQuery());
-    }
-    // search
-    public void search(){
+    private void load() {
         setContacts(getSearchQuery());
     }
 
-    // Set
+    // search
+    public void search() {
+        setContacts(getSearchQuery());
+    }
+
+    // Setters
+    public void setService(AddressBookService service) {
+        this.service = service;
+    }
+
     public void setSearchQuery(String searchQuery) {
         this.searchQuery = searchQuery;
     }
 
+    @PostConstruct
     public void setContacts(String searchQuery) {
         this.contacts = service.getContactsMatchingSearchQuery(searchQuery);
     }
 
-    // Get
+    // Getters
     public String getSearchQuery() {
         return searchQuery;
     }
@@ -48,7 +54,7 @@ public class SearchController {
         return contacts;
     }
 
-    // Edit
+    // Edit contact data
     public void onRowEdit(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Contact Edited", ((Contact) event.getObject()).getId().toString());
         FacesContext.getCurrentInstance().addMessage(null, msg);

@@ -6,32 +6,34 @@ import se.nackademin.addressbook.service.AddressBookService;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import java.util.Collection;
 
 @ManagedBean(name = "listContactsController")
 @RequestScoped
 public class ListContactsController {
-    @Inject
+
+    @ManagedProperty("#{service}")
     private AddressBookService service;
-    private boolean showConfirmDialog = false;
-    // Get
+
+    // Setters
+    public void setService(AddressBookService service) {
+        this.service = service;
+    }
+
+    // Getters
     public Collection<Contact> getContacts() {
         return service.getAllContacts();
     }
 
-    public boolean isShowConfirmDialog() {
-        return showConfirmDialog;
-    }
-
     // Delete contact
-    public void deleteContact(Integer id){
+    public void deleteContact(Integer id) {
         service.delete(id);
     }
 
-    // Edit
+    // Edit contact data
     public void onRowEdit(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Contact Edited", ((Contact) event.getObject()).getId().toString());
         FacesContext.getCurrentInstance().addMessage(null, msg);

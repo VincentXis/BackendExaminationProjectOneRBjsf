@@ -2,8 +2,8 @@ package se.nackademin.addressbook.service;
 
 import se.nackademin.addressbook.model.Contact;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,10 +12,13 @@ import java.util.Map;
 import static java.util.stream.Collectors.toList;
 
 @Singleton
+@ApplicationScoped
+@ManagedBean(name = "service")
 public class AddressBookService {
     private Integer id = 0;
-    private Map<Integer, Contact> contactMap = new HashMap<>();
+    private Map<Integer, Contact> contactMap = new HashMap<Integer, Contact>();
 
+    // Contact map modification functions
     public void add(Contact contactDetails) {
         contactDetails.setId(this.id++);
         contactMap.put(contactDetails.getId(), contactDetails);
@@ -25,8 +28,14 @@ public class AddressBookService {
         contactMap.remove(id);
     }
 
+    // Getters
     public Collection<Contact> getAllContacts() {
-        return contactMap.values();
+        if (contactMap != null) {
+            return contactMap.values();
+        } else {
+            contactMap = new HashMap<>();
+            return contactMap.values();
+        }
     }
 
     public Collection<Contact> getContactsMatchingSearchQuery(String searchQuery) {
@@ -40,7 +49,5 @@ public class AddressBookService {
                                 || (contact.getPhoneNumber() != null && contact.getPhoneNumber().contains(searchQuery)))
                 .collect(toList());
     }
-
-    // Todo: get contact by id, for updating purposes
 
 }

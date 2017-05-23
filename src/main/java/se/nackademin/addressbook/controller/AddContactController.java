@@ -4,14 +4,14 @@ import se.nackademin.addressbook.model.Contact;
 import se.nackademin.addressbook.model.ContactDetails;
 import se.nackademin.addressbook.service.AddressBookService;
 
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "addContactController")
 @RequestScoped
 public class AddContactController {
-    @Inject
+    @ManagedProperty("#{service}")
     private AddressBookService service;
     private Contact contact;
     private String message = "";
@@ -40,12 +40,16 @@ public class AddContactController {
                 (getContact().getPhoneNumber() != null && !getContact().getPhoneNumber().trim().isEmpty());
     }
 
-    // Set
+    // Setters
+    public void setService(AddressBookService service) {
+        this.service = service;
+    }
+
     public void setMessage(String message) {
         this.message = message;
     }
 
-    // Get
+    // Getters
     public Contact getContact() {
         if (this.contact == null) {
             this.contact = new ContactDetails();
