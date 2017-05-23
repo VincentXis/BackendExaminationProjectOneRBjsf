@@ -39,15 +39,20 @@ public class AddressBookService {
     }
 
     public Collection<Contact> getContactsMatchingSearchQuery(String searchQuery) {
-        return contactMap
-                .values()
-                .stream()
-                .filter(
-                        contact -> (contact.getFirstName() != null && contact.getFirstName().contains(searchQuery))
-                                || (contact.getLastName() != null && contact.getLastName().contains(searchQuery))
-                                || (contact.getEmailAddress() != null && contact.getEmailAddress().contains(searchQuery))
-                                || (contact.getPhoneNumber() != null && contact.getPhoneNumber().contains(searchQuery)))
-                .collect(toList());
+        if (contactMap != null) {
+            return contactMap
+                    .values()
+                    .stream()
+                    .filter(
+                            contact -> (contact.getFirstName() != null && contact.getFirstName().contains(searchQuery))
+                                    || (contact.getLastName() != null && contact.getLastName().contains(searchQuery))
+                                    || (contact.getEmailAddress() != null && contact.getEmailAddress().contains(searchQuery))
+                                    || (contact.getPhoneNumber() != null && contact.getPhoneNumber().contains(searchQuery)))
+                    .collect(toList());
+        } else {
+            contactMap = new HashMap<Integer, Contact>();
+            return contactMap.values();
+        }
     }
 
 }

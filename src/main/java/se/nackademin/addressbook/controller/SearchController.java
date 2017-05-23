@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @ManagedBean(name = "searchController")
@@ -19,7 +20,7 @@ public class SearchController {
     @ManagedProperty("#{service}")
     private AddressBookService service;
     private String searchQuery = "";
-    private Collection<Contact> contacts;
+    private Collection<Contact> contacts = new ArrayList<>();
 
     @PostConstruct
     private void load() {
@@ -40,7 +41,6 @@ public class SearchController {
         this.searchQuery = searchQuery;
     }
 
-    @PostConstruct
     public void setContacts(String searchQuery) {
         this.contacts = service.getContactsMatchingSearchQuery(searchQuery);
     }
