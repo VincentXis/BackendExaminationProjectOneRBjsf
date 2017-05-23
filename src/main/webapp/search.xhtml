@@ -23,8 +23,8 @@
                 <div style="margin-bottom: 10px;">
                     <p:inputText value="#{searchController.searchQuery}" style="margin-right:10px"
                                  placeholder="Search"/>
-                    <h:commandButton value="Search" icon="ui-icon-extlink"
-                                     action="#{searchController.search()}">
+                    <h:commandButton value="Search" icon="ui-icon-extlink" type="submit"
+                                     onclick="update()">
                     </h:commandButton>
                 </div>
 

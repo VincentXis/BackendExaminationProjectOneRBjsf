@@ -4,13 +4,11 @@ import org.primefaces.event.RowEditEvent;
 import se.nackademin.addressbook.model.Contact;
 import se.nackademin.addressbook.service.AddressBookService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import java.util.ArrayList;
 import java.util.Collection;
 
 @ManagedBean(name = "searchController")
@@ -20,16 +18,9 @@ public class SearchController {
     @ManagedProperty("#{service}")
     private AddressBookService service;
     private String searchQuery = "";
-    private Collection<Contact> contacts = new ArrayList<>();
-
-    @PostConstruct
-    private void load() {
-        setContacts(getSearchQuery());
-    }
 
     // search
     public void search() {
-        setContacts(getSearchQuery());
     }
 
     // Setters
@@ -41,17 +32,13 @@ public class SearchController {
         this.searchQuery = searchQuery;
     }
 
-    public void setContacts(String searchQuery) {
-        this.contacts = service.getContactsMatchingSearchQuery(searchQuery);
-    }
-
     // Getters
     public String getSearchQuery() {
         return searchQuery;
     }
 
     public Collection<Contact> getContacts() {
-        return contacts;
+        return service.getContactsMatchingSearchQuery(getSearchQuery());
     }
 
     // Edit contact data

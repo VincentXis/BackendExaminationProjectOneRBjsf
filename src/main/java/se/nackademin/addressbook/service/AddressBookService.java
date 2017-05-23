@@ -6,10 +6,10 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Singleton;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 @Singleton
 @ApplicationScoped
@@ -48,7 +48,7 @@ public class AddressBookService {
                                     || (contact.getLastName() != null && contact.getLastName().contains(searchQuery))
                                     || (contact.getEmailAddress() != null && contact.getEmailAddress().contains(searchQuery))
                                     || (contact.getPhoneNumber() != null && contact.getPhoneNumber().contains(searchQuery)))
-                    .collect(toList());
+                    .collect(Collectors.toList());
         } else {
             contactMap = new HashMap<Integer, Contact>();
             return contactMap.values();
