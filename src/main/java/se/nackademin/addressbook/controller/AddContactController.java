@@ -21,18 +21,18 @@ public class AddContactController {
         if (validateInput()) {
             service.add(getContact());
             setMessage("Contact added");
-            clearFields();
+            clearContact();
         } else {
             setMessage("Failed to add contact, all fields must be filled");
         }
     }
 
-    // Clear form fields
-    public void clearFields() {
+    // Clear contact
+    private void clearContact() {
         contact = null;
     }
 
-    // Validate input, null check and empty check
+    // Validate input, null and empty check
     private boolean validateInput() {
         return (getContact().getFirstName() != null && !getContact().getFirstName().trim().isEmpty()) &&
                 (getContact().getLastName() != null && !getContact().getLastName().trim().isEmpty()) &&

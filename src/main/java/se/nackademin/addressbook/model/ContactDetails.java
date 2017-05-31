@@ -7,17 +7,12 @@ public class ContactDetails implements Contact {
     private String emailAddress;
     private String phoneNumber;
 
-    public ContactDetails(String firstName, String lastName, String emailAddress, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-    }
-
+    // Constructor
     public ContactDetails() {
 
     }
 
+    // Setters
     @Override
     public void setId(Integer id) {
         this.id = id;
@@ -43,6 +38,7 @@ public class ContactDetails implements Contact {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getters
     @Override
     public Integer getId() {
         return id;

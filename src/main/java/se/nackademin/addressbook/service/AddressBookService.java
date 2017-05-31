@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 @ManagedBean(name = "service")
 public class AddressBookService {
+
     private Integer id = 0;
     private Map<Integer, Contact> contactMap = new HashMap<Integer, Contact>();
 

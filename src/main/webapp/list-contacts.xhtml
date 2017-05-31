@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,83 +8,76 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-    <title>Title</title>
-</h:head>
+<ui:composition template="templates/defaultTemplate.xhtml">
+    <ui:define name="content">
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
 
-<h:body>
-    <ui:composition template="templates/defaultTemplate.xhtml">
-        <ui:define name="content">
-            <h:form id="form">
-                <p:growl id="msgs" showDetail="true"/>
+            <p:dataTable id="contactTable" var="contact" editable="true"
+                         value="#{listContactsController.contacts}">
+                <p:growl id="message" showDetail="true"/>
+                <p:ajax event="rowEdit" listener="#{listContactsController.onRowEdit}" update=":form:msgs"/>
+                <p:ajax event="rowEditCancel" listener="#{listContactsController.onRowCancel}" update=":form:msgs"/>
 
-                <p:dataTable id="contactTable" var="contact" editable="true"
-                             value="#{listContactsController.contacts}">
-                    <p:growl id="message" showDetail="true"/>
-                    <p:ajax event="rowEdit" listener="#{listContactsController.onRowEdit}" update=":form:msgs"/>
-                    <p:ajax event="rowEditCancel" listener="#{listContactsController.onRowCancel}" update=":form:msgs"/>
+                <p:column headerText="Id" style="width: 50px;">
+                    <h:outputText value="#{contact.id}"/>
+                </p:column>
 
-                    <p:column headerText="Id" style="width: 50px;">
-                        <h:outputText value="#{contact.id}"/>
-                    </p:column>
+                <p:column headerText="First name">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{contact.firstName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{contact.firstName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="First name">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{contact.firstName}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText value="#{contact.firstName}"/>
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Last name">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{contact.lastName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{contact.lastName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="Last name">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{contact.lastName}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText value="#{contact.lastName}"/>
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Email">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{contact.emailAddress}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{contact.emailAddress}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="Email">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{contact.emailAddress}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText value="#{contact.emailAddress}"/>
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Phone number">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{contact.phoneNumber}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{contact.phoneNumber}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="Phone number">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{contact.phoneNumber}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText value="#{contact.phoneNumber}"/>
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Edit" style="width:32px">
+                    <p:rowEditor/>
+                </p:column>
 
-                    <p:column headerText="Edit" style="width:32px">
-                        <p:rowEditor/>
-                    </p:column>
+                <p:column headerText="Delete" style="width:50px">
+                    <p:commandButton value="X" update="message" onclick="update()"
+                                     actionListener="#{listContactsController.deleteContact(contact.id)}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
 
-                    <p:column headerText="Delete" style="width:50px">
-                        <p:commandButton value="X" update="message" onclick="update()"
-                                         actionListener="#{listContactsController.deleteContact(contact.id)}"/>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-
-        </ui:define>
-    </ui:composition>
-</h:body>
-
+    </ui:define>
+</ui:composition>
 </html>

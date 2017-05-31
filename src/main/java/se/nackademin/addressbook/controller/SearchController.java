@@ -19,10 +19,6 @@ public class SearchController {
     private AddressBookService service;
     private String searchQuery = "";
 
-    // search
-    public void search() {
-    }
-
     // Setters
     public void setService(AddressBookService service) {
         this.service = service;
@@ -39,6 +35,11 @@ public class SearchController {
 
     public Collection<Contact> getContacts() {
         return service.getContactsMatchingSearchQuery(getSearchQuery());
+    }
+
+    // Delete contact
+    public void deleteContact(Integer id) {
+        service.delete(id);
     }
 
     // Edit contact data
